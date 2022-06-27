@@ -1,27 +1,28 @@
-pluginManagement {
-    repositories {
-        maven {
-            allowInsecureProtocol = true
-            url "http://maven.geelib.360.cn/nexus/service/rest/repository/browse/replugin/"
-        }
-        gradlePluginPortal()
-        jcenter()
-        mavenCentral()
-        google()
-    }
-
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        maven {
-            allowInsecureProtocol = true
-            url "http://maven.geelib.360.cn/nexus/service/rest/repository/browse/replugin/"
-        }
-        jcenter()
-        mavenCentral()
-        google()
-    }
-}
+//pluginManagement {
+//    repositories {
+//        maven {
+//            allowInsecureProtocol = true
+//            url "http://maven.geelib.360.cn/nexus/service/rest/repository/browse/replugin/"
+//        }
+//        gradlePluginPortal()
+//        jcenter()
+//        mavenCentral()
+//        google()
+//    }
+//
+//}
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        maven {
+//            allowInsecureProtocol = true
+//            url "http://maven.geelib.360.cn/nexus/service/rest/repository/browse/replugin/"
+//        }
+//        jcenter()
+//        mavenCentral()
+//        google()
+//    }
+//}
 rootProject.name = "SunRePlugin"
 include ':app'
+include ':plugin'

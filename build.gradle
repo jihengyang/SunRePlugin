@@ -7,9 +7,9 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+        classpath 'com.android.tools.build:gradle:3.5.4'
         classpath "com.qihoo360.replugin:replugin-host-gradle:${RP_VERSION}"
+        classpath "com.qihoo360.replugin:replugin-plugin-gradle:${RP_VERSION}"
     }
 }
 

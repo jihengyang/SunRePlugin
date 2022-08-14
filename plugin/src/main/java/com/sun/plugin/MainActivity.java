@@ -1,11 +1,16 @@
 package com.sun.plugin;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import com.qihoo360.replugin.loader.a.PluginActivity;
 
 public class MainActivity extends PluginActivity {
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

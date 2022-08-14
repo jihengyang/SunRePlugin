@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "com.sun.plugin"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -27,9 +27,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation "com.qihoo360.replugin:replugin-plugin-lib:${RP_VERSION}"
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation project(':replugin-plugin-lib')
+//    implementation "com.qihoo360.replugin:replugin-plugin-lib:${RP_VERSION}"
 }
 
 // 这个plugin需要放在android配置之后，因为需要读取android中的配置项

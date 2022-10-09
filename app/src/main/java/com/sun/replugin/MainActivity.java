@@ -3,6 +3,7 @@ package com.sun.replugin;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.model.PluginInfo;
@@ -21,6 +22,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.start_plugin_btn).setOnClickListener(v -> simulateInstallExternalPlugin());
+        Log.i("TestAppLoadClass", "do load MainActivity, classLoader:" + TestApplicationLoadClass.class.getClassLoader());
     }
 
     /**

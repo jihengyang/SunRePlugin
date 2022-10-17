@@ -12,5 +12,7 @@ public class SunApplication extends RePluginApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         TestApplicationLoadClass.load();
+        HostServiceProvider.services.clear();
+        HostServiceProvider.services.add(new HostServiceImpl());
     }
 }

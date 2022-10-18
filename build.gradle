@@ -5,11 +5,20 @@ buildscript {
         jcenter()
         mavenCentral()
         google()
+        maven { url "https://mirrors.tencent.com/repository/maven/thirdparty/" }
+        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public_snapshots/" }
+        maven { url "https://mirrors.tencent.com/repository/maven/thirdparty-snapshots/" }
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public/" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.4'
         classpath "com.qihoo360.replugin:replugin-host-gradle:${RP_VERSION}"
         classpath "com.qihoo360.replugin:replugin-plugin-gradle:${RP_VERSION}"
+        classpath 'com.didichuxing.tools:droidassist:1.1.1'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30'
+        classpath 'com.tencent.caster:caster-plugin:0.3.7'
+        classpath 'com.tencent.mobileqq.qmethodmonitor.transform:QMethodMonitorTransform:0.9.6.5'
     }
 }
 
@@ -19,6 +28,11 @@ allprojects {
         jcenter()
         mavenCentral()
         google()
+        maven { url "https://mirrors.tencent.com/repository/maven/thirdparty/" }
+        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public_snapshots/" }
+        maven { url "https://mirrors.tencent.com/repository/maven/thirdparty-snapshots/" }
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public/" }
     }
 }
 

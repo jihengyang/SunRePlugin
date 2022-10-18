@@ -2,3 +2,4 @@ rootProject.name = "SunRePlugin"
 include ':app'
 include ':plugin'
 include ':replugin-plugin-lib'
+include ':lib'

@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'caster'
+//apply plugin: 'com.didichuxing.tools.droidassist'
 
 android {
     compileSdkVersion 30
@@ -25,10 +27,17 @@ android {
     }
 }
 
-dependencies {
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 
+dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation project(':replugin-plugin-lib')
+//    compileOnly project(':lib')
+//    implementation fileTree(dir: 'libs', includes: ['*.jar'])
 //    implementation "com.qihoo360.replugin:replugin-plugin-lib:${RP_VERSION}"
 }
 
@@ -43,4 +52,69 @@ repluginPluginConfig {
     //宿主app的启动activity
     hostAppLauncherActivity = "com.sun.replugin.MainActivity"
 }
+
+import com.tencent.mobileqq.qmethodmonitor.transform.QMethodExtensions
+
+apply {
+    extensions.create("qmethodconfigs", QMethodExtensions, project)
+}
+
+qmethodconfigs {
+    enableLog = true
+
+    // useDefaultConfig 是否使用插件中qmethod-protection隐私兜底组件默认配置,默认为true
+    //  设置为true： 或者qmethodconfigs不声明，插桩会默认使用qmethod-protection隐私兜底组件默认配置，并且qmethodconfigs中的配置会覆盖默认配置
+    //  设置为false：插桩使用build.gradle中qmethodconfigs中的配置
+    useDefaultConfig = true
+
+    // 是否把stubConfigs默认配置到插装黑名单中，防止循环插桩。默认为true
+    addConfigClassToBlack = true
+
+    // 是否把没有插桩到的api进行删除。默认为false
+    isDeleteUnusedMethod = true
+
+    isEnableSilentCallDetect = true
+
+    isHookReflect = true
+
+    // 黑名单
+    blackList = [
+            "com.tencent.qmethod.pandoraex.monitor.ClipboardMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.LocationMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.NetworkMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.AudioMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.CameraMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.PermissionMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.ContactsMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.DeviceInfoMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.InstalledAppListMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.SmsMonitor",
+            "com.tencent.qmethod.pandoraex.monitor.SensorMonitor",
+            "com.tencent.mqq.shared_file_accessor.ContentProviderClient",
+            "com.tencent.mobileqq.pandora.deviceinfo.DeviceInfoManager",
+            "com.tencent.mobileqq.pandora.deviceinfo.MacManager",
+            "com.tencent.mobileqq.pandora.deviceinfo.WifiInfoManager",
+            "com.tencent.mobileqq.qmethodmonitor.TestWhiteListUtils",
+            "com.tencent.mobileqq.qmethodmonitor.special.*"
+    ]
+
+    // 白名单  如果白名单和黑名单同时配置，白名单优先级大于黑名单
+    itemWhiteList = [
+            //"com.tencent.mobileqq.qmethodmonitor.special.*"
+    ]
+    fieldConfigs = [
+            [
+                    "src"     : "android.os.Build.MANUFACTURER",
+                    "srcParam": "Ljava/lang/String;",
+                    "dst"     : "com.sun.lib.PrivacyMethodHookHelper.getBuildManufacture",
+                    "dstParam": "()Ljava/lang/String;",
+            ]
+    ]
+
+    stubConfigs = []
+}
+
+//droidAssistOptions {
+//    config file("./script/test_asm.xml") //插件配置文件(必选配置,支持多配置文件)
+//}
 

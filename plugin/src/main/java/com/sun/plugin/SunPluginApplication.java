@@ -4,7 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 import com.qihoo360.replugin.RePlugin;
+import com.sun.replugin.IHostService;
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * @author hengyangji
@@ -37,7 +39,10 @@ public class SunPluginApplication extends Application {
         }
         servicesListField.setAccessible(true);
         try {
-            Object obj = servicesListField.get(hostServicesClass);
+            List<IHostService> services = (List<IHostService>) servicesListField.get(hostServicesClass);
+            if (services != null) {
+                Log.i("SunPluginApplication", "attain services");
+            }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
